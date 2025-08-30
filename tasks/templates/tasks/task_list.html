@@ -3,7 +3,10 @@
 <ul>
     {% for task in tasks %}
         <li>
-            {{ task.title }} - {% if task.completed %}✔{% else %}❌{% endif %}
+            <a href="{% url 'task_detail' task.pk %}">
+                {{ task.title }}
+            </a>
+             - {% if task.completed %}✔{% else %}❌{% endif %}
             <a href="{% url 'task_update' task.pk %}">Edit</a>
             <a href="{% url 'task_delete' task.pk %}">Delete</a>
         </li>
@@ -11,3 +14,15 @@
         <li>No tasks yet.</li>
     {% endfor %}
 </ul>
+
+<!-- <ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} - {% if task.completed %}✔{% else %}❌{% endif %}
+            <a href="{% url 'task_update' task.pk %}">Edit</a>
+            <a href="{% url 'task_delete' task.pk %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No tasks yet.</li>
+    {% endfor %}
+</ul> -->

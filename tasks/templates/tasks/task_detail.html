@@ -1,0 +1,18 @@
+<div class="card shadow-sm p-4">
+    <h2>{{ task.title }}</h2>
+    <p>{{ task.description }}</p>
+    <p>
+        <strong>Status:</strong> 
+        {% if task.completed %}
+            <span class="text-success">✔ Completed</span>
+        {% else %}
+            <span class="text-danger">❌ Pending</span>
+        {% endif %}
+    </p>
+    <p><small class="text-muted">Created at: {{ task.created_at }}</small></p>
+
+    <a href="{% url 'task_update' task.pk %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+
