@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import TaskForm
@@ -12,6 +13,7 @@ def task_list(request):
     return render(request, "tasks/task_list.html", {"tasks": tasks})
 
 
+@login_required
 def task_create(request):
     """
     Create a new task.
@@ -26,6 +28,7 @@ def task_create(request):
     return render(request, "tasks/task_form.html", {"form": form})
 
 
+@login_required
 def task_update(request, pk):
     """
     Update an existing task identified by primary key (pk).
@@ -41,6 +44,7 @@ def task_update(request, pk):
     return render(request, "tasks/task_form.html", {"form": form})
 
 
+@login_required
 def task_delete(request, pk):
     """
     Delete an existing task identified by primary key (pk).
@@ -52,6 +56,7 @@ def task_delete(request, pk):
     return render(request, "tasks/task_confirm_delete.html", {"task": task})
 
 
+@login_required
 def task_detail(request, pk):
     """Show full details for a single task."""
     task = get_object_or_404(Task, pk=pk)
